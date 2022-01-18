@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from users.views import CBUserModelViewSet
+from todoapp.views import ProjectModelViewSet, NoteModelViewSet
 
 router = DefaultRouter()
 router.register('users', CBUserModelViewSet)
+router.register('projects', ProjectModelViewSet)
+router.register('notes', NoteModelViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
