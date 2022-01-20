@@ -4,6 +4,7 @@ from .serializers import CBUserModelSerializer
 
 
 class CBUserModelViewSet(ModelViewSet):
-   queryset = CBUser.objects.all()
    serializer_class = CBUserModelSerializer
+   queryset = CBUser.objects.all()
+
 

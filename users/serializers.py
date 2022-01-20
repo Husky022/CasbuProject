@@ -3,6 +3,6 @@ from .models import CBUser
 
 
 class CBUserModelSerializer(HyperlinkedModelSerializer):
-   class Meta:
-       model = CBUser
-       fields = '__all__'
+    class Meta:
+        model = CBUser
+        fields = '__all__'
