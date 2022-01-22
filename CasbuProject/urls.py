@@ -20,13 +20,14 @@ from users.views import CBUserModelViewSet
 from todoapp.views import ProjectModelViewSet, NoteModelViewSet
 
 router = DefaultRouter()
-router.register('users', CBUserModelViewSet)
-router.register('projects', ProjectModelViewSet)
-router.register('notes', NoteModelViewSet)
+router.register('users', CBUserModelViewSet, basename='users')
+router.register('projects', ProjectModelViewSet, basename='projects')
+router.register('notes', NoteModelViewSet, basename='notes')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('viewsets/', include(router.urls)),
     path('api/', include(router.urls)),
-    # path('views/api-view/', views.CBUserModelViewSet.as_view()),
 ]

@@ -1,8 +1,9 @@
-from rest_framework.serializers import HyperlinkedModelSerializer
+from rest_framework import serializers
 from .models import CBUser
 
 
-class CBUserModelSerializer(HyperlinkedModelSerializer):
+class CBUserModelSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = CBUser
         fields = '__all__'

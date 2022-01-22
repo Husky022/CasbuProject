@@ -1,14 +1,16 @@
-from rest_framework.serializers import HyperlinkedModelSerializer
+from rest_framework import serializers
 from .models import Project, Note
 
 
-class ProjectModelSerializer(HyperlinkedModelSerializer):
+class ProjectModelSerializer(serializers.ModelSerializer):
+
    class Meta:
        model = Project
        fields = '__all__'
 
 
-class NoteModelSerializer(HyperlinkedModelSerializer):
+class NoteModelSerializer(serializers.ModelSerializer):
+
    class Meta:
-       model = Project
-       exclude = ['create', 'update', 'is_active']
+       model = Note
+       fields = '__all__'
