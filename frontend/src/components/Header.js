@@ -5,9 +5,9 @@ import './Header.css';
 class Menu extends React.Component{
     render() {
         let points = [
-            'Home',
-            'ToDo',
-            'Archive',
+            'Users',
+            'Projects',
+            'ToDo\'s',
             'About'
         ]
     return <div className="container-menu">
