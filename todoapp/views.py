@@ -30,7 +30,7 @@ class ProjectModelViewSet(viewsets.ModelViewSet):
 
 class NoteModelViewSet(viewsets.ModelViewSet):
     http_method_names = ['get', 'post', 'head', 'delete', 'put']
-    filterset_fields = ['project']
+    filterset_fields = ['project', 'creator']
     pagination_class = NotePaginator
 
     def _allowed_methods(self):

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 
 const ProjectItem = ({project}) => {
@@ -17,22 +18,44 @@ const ProjectItem = ({project}) => {
    )
 }
 
-const ProjectList = ({projects}) => {
+export const ProjectList = ({projects}) => {
    return (
-       <table>
-           <th>
-               ID
-           </th>
-           <th>
-               Name
-           </th>
-           <th>
-               Link
-           </th>
-           {projects.map((project) => <ProjectItem project={project} />)}
-       </table>
+       <div className="content-wrapper">
+           <table>
+               <th>
+                   ID
+               </th>
+               <th>
+                   Name
+               </th>
+               <th>
+                   Link
+               </th>
+               {projects.map((project) => <ProjectItem project={project} />)}
+           </table>
+       </div>
+   )
+}
+
+export const UserProjectList = ({projects}) => {
+   let { id } = useParams();
+   let filtered_projects = projects.filter((project) => id in project.users)
+   return (
+       <div className="content-wrapper">
+           <table>
+               <th>
+                   ID
+               </th>
+               <th>
+                   Name
+               </th>
+               <th>
+                   Link
+               </th>
+               {filtered_projects.map((project) => <ProjectItem project={project} />)}
+           </table>
+       </div>
    )
 }
 
 
-export default ProjectList

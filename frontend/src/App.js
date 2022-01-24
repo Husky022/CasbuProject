@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './components/Header.css';
 import UserList from './components/Users.js'
-import ProjectList from './components/Projects.js'
+import {ProjectList, UserProjectList} from './components/Projects.js'
 import NoteList from './components/ToDos.js'
-import Menu from "./components/Header.js";
 import Footer from "./components/Footer.js";
 import axios from 'axios'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Menu from "./components/Header.js";
 
 
 class App extends React.Component {
@@ -18,7 +19,6 @@ class App extends React.Component {
            'notes': []
        }
    }
-
     componentDidMount() {
        axios.get('http://127.0.0.1:8000/api/users')
            .then(response => {
@@ -56,13 +56,18 @@ class App extends React.Component {
     }
 
        render () {
-           return <div>
-           <Menu />
-           <UserList users={this.state.users} />
-           <ProjectList projects={this.state.projects} />
-           <NoteList notes={this.state.notes} />
-           <Footer />
-           </div>
+           return <div className="App">
+                       <BrowserRouter>
+                           <Menu />
+                           <Routes>
+                               <Route exact path='/users' element={<UserList users={this.state.users} />}  />
+                               <Route exact path='/projects' element={<ProjectList projects={this.state.projects} />} />
+                               <Route exact path='/notes' element={<NoteList notes={this.state.notes} />} />
+                               <Route exact path="/users/:id" element={<UserProjectList projects={this.state.projects} />} />
+                           </Routes>
+                       </BrowserRouter>
+                       <Footer />
+                </div>
        }
 
     }
