@@ -10,13 +10,13 @@
 
 .container-menu-buttons {
     width: 50%;
+    display: flex;
+    flex-direction: row;
 }
 
 .menu-buttons-list{
     font-size: 20px;
     width: 100%;
-    display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
@@ -29,7 +29,3 @@
 .menu-button:hover{
     font-weight: bolder;
 }
-
-
-
-
