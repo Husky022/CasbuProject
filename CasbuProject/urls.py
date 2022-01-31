@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from users.views import CBUserModelViewSet
 from todoapp.views import ProjectModelViewSet, NoteModelViewSet
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 router = DefaultRouter()
 router.register('users', CBUserModelViewSet, basename='users')
@@ -30,5 +31,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('viewsets/', include(router.urls)),
     path('api/', include(router.urls)),
-    path('api-token-auth/', views.obtain_auth_token)
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair')
 ]
