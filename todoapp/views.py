@@ -1,5 +1,5 @@
 from rest_framework.response import Response
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from .models import Project, Note
 from .serializers import ProjectModelSerializer, NoteModelSerializer
 from rest_framework.pagination import PageNumberPagination
@@ -14,6 +14,7 @@ class NotePaginator(PageNumberPagination):
 
 
 class ProjectModelViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
     http_method_names = ['get', 'post', 'head', 'delete', 'put']
     filterset_fields = ['name']
     pagination_class = ProjectPaginator
@@ -29,6 +30,7 @@ class ProjectModelViewSet(viewsets.ModelViewSet):
 
 
 class NoteModelViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
     http_method_names = ['get', 'post', 'head', 'delete', 'put']
     filterset_fields = ['project', 'creator']
     pagination_class = NotePaginator
